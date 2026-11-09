@@ -1,0 +1,181 @@
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300italic,300,400italic);
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+body,
+html {
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+/* ===== ОБЩИЙ КОНТЕЙНЕР ===== */
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #999;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== СИНИЙ СКОШЕННЫЙ ФОН ===== */
+.background-element {
+  background: #457;
+  position: absolute;
+  width: 120%;
+  height: 400px;
+  left: -50px;
+  top: -80px;
+  transform: rotate(-5deg);
+  transition: background .6s ease;
+}
+
+/* ===== БЛОК С КАРТИНКОЙ (слева) ===== */
+/* Цвет фона и размеры. Картинки подставляются через style в App.jsx */
+.highlight-window {
+  height: 550px;
+  width: 400px;
+  background-color: #ccc; 
+  background-size: cover;
+  background-position: center top;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
+}
+
+/* Эффект при наведении (черное пальто) */
+.highlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: opacity .4s ease;
+}
+
+.highlight-window:hover .highlight-overlay {
+  opacity: 1;
+}
+
+/* ===== БЕЛОЕ ОКНО С ТЕКСТОМ (справа) ===== */
+.window {
+  background: #fff;
+  width: 470px;
+  display: flex;
+  min-height: 400px;
+  position: relative;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* ===== КОНТЕНТ ВНУТРИ БЕЛОГО ОКНА ===== */
+.main-content {
+  padding: 50px 40px; /* Одинаковые отступы сверху/снизу и слева/справа */
+  box-sizing: border-box;
+  display: flex;
+  color: #222;
+  width: 100%;
+  height: 100%;
+  flex-flow: column;
+  position: relative;
+}
+
+/* ПУНКТИРНАЯ РАМКА */
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px dashed #a04050;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Чтобы текст был ПОВЕРХ рамки */
+.main-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== ТИПОГРАФИКА ===== */
+h1 {
+  letter-spacing: .02rem;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+h3 {
+  color: #666;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.description {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ===== РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ ===== */
+.divider {
+  width: 80%;
+  height: 1px;
+  background: #ddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== БЛОК С ЦЕНОЙ И КНОПКОЙ ===== */
+.purchase-info {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.price {
+  font-size: 2.5rem;
+}
+
+button {
+  background: #333;
+  border: none;
+  font-weight: 400;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: #555;
+}
+
+/* ===== СКРЫТИЕ МОБИЛЬНЫХ ЭЛЕМЕНТОВ НА ДЕСКТОПЕ ===== */
+.highlight-window.mobile {
+  display: none;
+}
